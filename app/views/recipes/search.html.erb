@@ -1,10 +1,21 @@
-<h3>This is from the search page.</h3>
+<h2>Your Recipes</h2>
 
 <% if @recipes.empty? %>
   <%= flash[:message] = "No recipes found with your search." %>
 <% else %>
   <%= flash[:message] = "Recipes found!" %>
+  <p><%= "#{@recipes.count} recipes found for your search '#{params[:q]}'." %></p>
+
   <%= @recipes.each do |recipe| %>
-    <%= puts recipe %>
+  <h4><%= recipe["recipe"]["label"] %></h4>
+  <ul>
+    <li>Full Recipe: <%= recipe["recipe"]["uri"] %></li>
+    <li><img src="<%= recipe["recipe"]["image"] %>"></li>
+    <li>
+      <% recipe["recipe"]["ingredientLines"].each do |ingredient| %>
+      
+      <% end %>
+    </li>
+  </ul>
   <% end %>
 <% end %>

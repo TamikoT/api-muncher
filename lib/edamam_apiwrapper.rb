@@ -1,15 +1,12 @@
 require 'httparty'
 require 'dotenv-rails'
 
+BASE_URL = "https://api.edamam.com/search\?"
+EDAMAM_ID = ENV["EDAMAM_ID"]
+EDAMAM_KEY = ENV["EDAMAM_KEY"]
+
 class EdamamApiWrapper
   attr_reader :response
-
-  BASE_URL = "https://api.edamam.com/search\?"
-  EDAMAM_ID = ENV["EDAMAM_ID"]
-  EDAMAM_KEY = ENV["EDAMAM_KEY"]
-
-  def initialize
-  end
 
   # list of recipes that are returned from a user search
   def self.find_recipes(terms)
@@ -21,6 +18,7 @@ class EdamamApiWrapper
       "to" => 5, # first 5 recipes
       "health" => "dairy-free",
     }
-    @response = HTTParty.get(BASE_URL, query: query_params).parsed_response
+    response = HTTParty.get(BASE_URL, query: query_params)
+    return response["hits"]
   end
 end

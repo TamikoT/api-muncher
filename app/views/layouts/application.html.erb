@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html class="no-js" lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -13,13 +13,19 @@
 
   <body>
     <header>
-      <section class="large-3 columns">
-        <%= form_tag(search_path, method: :get) do %>
-          <%= label_tag "Search for recipes:" %>
-          <%= text_field_tag :q %>
-          <%= submit_tag "Search", :name => nil, class: "button" %>
-        <% end %>
-      </section>
+      <nav class="top-bar">
+        <div class="top-bar-left">
+          <h2><a href="#">NO MOO</a></h2>
+        </div>
+
+        <div class="top-bar-right search-bar">
+          <%= form_tag(search_path, method: :get) do %>
+            <div><%= label_tag "Search for recipes:" %></div>
+            <div><%= text_field_tag :q %></div>
+            <div><%= submit_tag "Search", :name => nil, class: "button" %></div>
+          <% end %>
+        </div>
+      </nav>
 
       <section class='flash'>
         <% flash.each do |name, message| %>
