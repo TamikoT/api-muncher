@@ -1,0 +1,10 @@
+<h3>This is from the search page.</h3>
+
+<% if @recipes.empty? %>
+  <%= flash[:message] = "No recipes found with your search." %>
+<% else %>
+  <%= flash[:message] = "Recipes found!" %>
+  <%= @recipes.each do |recipe| %>
+    <%= puts recipe %>
+  <% end %>
+<% end %>
