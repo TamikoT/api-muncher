@@ -13,8 +13,21 @@
 
   <body>
     <header>
-      <%= render :search %>
+      <section class="large-3 columns">
+        <%= form_tag(search_path, method: :get) do %>
+          <%= label_tag "Search for recipes:" %>
+          <%= text_field_tag :q %>
+          <%= submit_tag "Search", :name => nil, class: "button" %>
+        <% end %>
+      </section>
+
+      <section class='flash'>
+        <% flash.each do |name, message| %>
+        <div class="<%= name %>"><%= message %></div>
+        <% end %>
+      </section>
     </header>
+
     <main>
       <%= yield %>
     </main>
