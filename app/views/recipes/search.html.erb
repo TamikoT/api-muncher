@@ -6,15 +6,14 @@
   <%= flash[:message] = "Recipes found!" %>
   <p><%= "#{@recipes.count} recipes found for your search '#{params[:q]}'." %></p>
 
-  <%= @recipes.each do |recipe| %>
-  <h4><%= recipe["recipe"]["label"] %></h4>
-  <ul>
-    <li>Full Recipe: <%= recipe["recipe"]["url"] %></li>
-    <li><img src="<%= recipe["recipe"]["image"] %>"></li>
-      <% recipe["recipe"]["ingredientLines"].each do |ingredient| %>
-
-      <% end %>
-    </li>
-  </ul>
+  <% @recipes.each do |recipe| %>
+    <h4><%= recipe["name"] %></h4>
+    <p>Full Recipe: <%= recipe["url"] %></p>
+    <img src="<%= recipe["image"] %>">
+    <ul>
+    <% recipe["ingredients"].each do |ingredient| %>
+      <li><%= ingredient %></li>
+    <% end %>
+    </ul>
   <% end %>
 <% end %>
