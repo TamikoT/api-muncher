@@ -9,11 +9,10 @@
   <%= @recipes.each do |recipe| %>
   <h4><%= recipe["recipe"]["label"] %></h4>
   <ul>
-    <li>Full Recipe: <%= recipe["recipe"]["uri"] %></li>
+    <li>Full Recipe: <%= recipe["recipe"]["url"] %></li>
     <li><img src="<%= recipe["recipe"]["image"] %>"></li>
-    <li>
       <% recipe["recipe"]["ingredientLines"].each do |ingredient| %>
-      
+
       <% end %>
     </li>
   </ul>
