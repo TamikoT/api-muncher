@@ -18,21 +18,28 @@ class EdamamApiWrapper
       "health" => "dairy-free",
     }
     response = HTTParty.get(BASE_URL, query: query_params)
-    hash = recipes_hash(response["hits"])
-    return hash
+    recipe_collection = recipes_hash(response["hits"])
+    return recipe_collection
+  end
+
+  def self.find(recipe)
+    query_params = {
+      "q" => terms,
+      "id" => EDAMAM_ID,
+      "app_key" => EDAMAM_KEY,
+      "r" => recipe["uri"],
+    }
+    response = HTTParty.get(BASE_URL, query: query_params)
+    found_recipe = Recipe.new(response["hits"])
+    return found_recipe
   end
 
   private
 
   def self.recipes_hash(hits)
-    recipe_collection = Array.new
-    hits.each_with_index do |recipe, i|
-      recipe_collection[i] = {
-        "name" => recipe["recipe"]["label"],
-        "url" => recipe["recipe"]["url"],
-        "image" => recipe["recipe"]["image"],
-        "ingredients" => recipe["recipe"]["ingredientLines"],
-      }
+    recipe_collection = []
+    hits.each do |recipe|
+      recipe_collection << Recipe.new(recipe)
     end
     return recipe_collection
   end
