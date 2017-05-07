@@ -6,7 +6,7 @@
 
     <title><%= content_for?(:title) ? yield(:title) : "Untitled" %></title>
 
-    <%= stylesheet_link_tag    "application" %>
+    <%= stylesheet_link_tag    "application", media: "all" %>
     <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
   </head>
@@ -16,6 +16,7 @@
       <nav class="top-bar">
         <div class="top-bar-left">
           <h2><a href="#">NO MOO</a></h2>
+          <p>dairy-free recipes just for you</p>
         </div>
 
         <div class="top-bar-right search-bar">
@@ -37,5 +38,14 @@
     <main>
       <%= yield %>
     </main>
+
+    <footer class="footer-bar">
+      <div>
+        <p class="text-center">powered by</p>
+      </div>
+      <div class="small-2 small-centered columns">
+        <a href="https://developer.edamam.com/"><%= image_tag "logo.jpg" %></a>
+      </div>
+    </footer>
   </body>
 </html>

@@ -19,3 +19,8 @@
  .search-bar div {
    display: inline-block;
  }
+
+.footer-bar {
+  border-top: 1px solid green;
+  margin: 0;
+}
