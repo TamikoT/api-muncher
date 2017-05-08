@@ -8,6 +8,7 @@ Bundler.require(*Rails.groups)
 
 module ApiMuncher
   class Application < Rails::Application
+    config.autoload_paths << Rails.root.join('lib')
     # compress files with gzip
     config.middleware.use Rack::Deflater
 

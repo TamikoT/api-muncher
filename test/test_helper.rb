@@ -28,13 +28,6 @@ VCR.configure do |config|
   config.filter_sensitive_data("<EDAMAM_KEY>") { ENV['EDAMAM_KEY'] }
 end
 
-# To add Capybara feature tests add `gem "minitest-rails-capybara"`
-# to the test group in the Gemfile and uncomment the following:
-# require "minitest/rails/capybara"
-
-# Uncomment for awesome colorful output
-# require "minitest/pride"
-
 class ActiveSupport::TestCase
   # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
   fixtures :all
