@@ -6,23 +6,28 @@ EDAMAM_ID = ENV["EDAMAM_ID"]
 EDAMAM_KEY = ENV["EDAMAM_KEY"]
 
 class EdamamApiWrapper
+  attr_reader :uri, :label, :url, :image, :ingredients, :dietary, :yield, :source, :calories
 
-  # list of recipes that are returned from a user search
-  def self.find_recipes(terms)
+  def initialize; end
+
+  def self.find_recipes(query)
     query_params = {
-      "q" => terms,
+      "q" => query,
       "id" => EDAMAM_ID,
       "app_key" => EDAMAM_KEY,
       "from" => 0,
       "to" => 5, # first 5 recipes
       "health" => "dairy-free",
     }
-    response = HTTParty.get(BASE_URL, query: query_params)
-    recipe_collection = recipes_hash(response["hits"])
+    response = HTTParty.get(BASE_URL, query: query_params).parsed_response
+    recipe_collection = Array.new
+    response["hits"].each do |recipe|
+      recipe_collection << Recipe.new(recipe)
+    end
     return recipe_collection
   end
 
-  def self.find(recipe)
+  def self.find(uri)
     query_params = {
       "q" => terms,
       "id" => EDAMAM_ID,
@@ -32,15 +37,5 @@ class EdamamApiWrapper
     response = HTTParty.get(BASE_URL, query: query_params)
     found_recipe = Recipe.new(response["hits"])
     return found_recipe
-  end
-
-  private
-
-  def self.recipes_hash(hits)
-    recipe_collection = []
-    hits.each do |recipe|
-      recipe_collection << Recipe.new(recipe)
-    end
-    return recipe_collection
   end
 end
