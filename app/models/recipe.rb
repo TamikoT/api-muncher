@@ -1,4 +1,4 @@
-class Recipe
+class Recipe < ApplicationRecord
   attr_reader :uri, :label, :url, :image, :ingredients, :dietary, :yield, :source, :calories
 
   def initialize(recipe)
