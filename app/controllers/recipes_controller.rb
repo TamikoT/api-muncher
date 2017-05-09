@@ -1,11 +1,12 @@
-require 'edamam_api_wrapper'
-
 class RecipesController < ApplicationController
-  def index
-    # @recipes = EdamamApiWrapper.random
-  end
+
+  def index; end
 
   def search
     @recipes = EdamamApiWrapper.find_recipes(params[:q])
+  end
+
+  def show
+    @recipe = EdamamApiWrapper.find(params[:index])
   end
 end

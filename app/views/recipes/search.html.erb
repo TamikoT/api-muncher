@@ -6,8 +6,8 @@
   <%= flash[:message] = "Recipes found!" %>
   <p><%= "#{@recipes.count} recipes found for your search '#{params[:q]}'." %></p>
 
-  <%= @recipes.each do |recipe| %>
-    <h4><%= recipe.label %></h4>
+  <% @recipes.each_with_index do |recipe, i| %>
+    <h4><%= link_to recipe.label, recipe_path(i) %></h4>
     <p>Full Recipe: <%= recipe.url %></p>
     <img src="<%= recipe.image %>">
     <ul>
