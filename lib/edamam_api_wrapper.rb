@@ -15,8 +15,8 @@ class EdamamApiWrapper
       "q" => query,
       "id" => EDAMAM_ID,
       "app_key" => EDAMAM_KEY,
-      "from" => 0,
-      "to" => 5, # first 5 recipes
+      # "from" => 0,
+      # "to" => 5, # first 5 recipes
       "health" => "dairy-free",
     }
     response = HTTParty.get(BASE_URL, query: query_params).parsed_response
@@ -26,6 +26,6 @@ class EdamamApiWrapper
   end
 
   def self.find(index)
-    found_recipe = @all_recipes[index.to_i]
+    @all_recipes[index.to_i]
   end
 end

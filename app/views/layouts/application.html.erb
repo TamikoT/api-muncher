@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title><%= content_for?(:title) ? yield(:title) : "Untitled" %></title>
+    <title>No Moo</title>
 
     <%= stylesheet_link_tag    "application", media: "all" %>
     <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
@@ -20,7 +20,7 @@
         </div>
 
         <div class="top-bar-right search-bar">
-          <%= form_tag(search_path, method: :get) do %>
+          <%= form_tag(recipes_path, method: :get) do %>
             <div><%= label_tag "Search for recipes:" %></div>
             <div><%= text_field_tag :q %></div>
             <div><%= submit_tag "Search", :name => nil, class: "button" %></div>
