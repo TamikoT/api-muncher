@@ -7,13 +7,7 @@
   <p><%= "#{@recipes.count} recipes found for your search '#{params[:q]}'." %></p>
 
   <% @recipes.each_with_index do |recipe, i| %>
-    <h4><%= link_to recipe.label, recipe_path(i) %></h4>
-    <p>Full Recipe: <%= recipe.url %></p>
     <img src="<%= recipe.image %>">
-    <ul>
-    <%= recipe.ingredients.each do |ingredient| %>
-      <li><%= ingredient %></li>
-    <% end %>
-    </ul>
+    <h4><%= link_to recipe.label, recipe_path(i) %></h4>
   <% end %>
 <% end %>
