@@ -24,3 +24,14 @@
   border-top: 1px solid green;
   margin: 0;
 }
+
+.menu li {
+  display: inline-flex;
+  vertical-align: middle;
+}
+
+.html {
+  background-image: url(grassy_background.jpg);
+  background-repeat: no-repeat;
+
+}

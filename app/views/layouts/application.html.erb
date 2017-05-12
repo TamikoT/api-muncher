@@ -9,6 +9,12 @@
     <%= stylesheet_link_tag    "application", media: "all" %>
     <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
+    <link href="https://fonts.googleapis.com/css?family=Patrick+Hand" rel="stylesheet">
+    <style>
+      body {
+        font-family: 'Patrick Hand', serif;
+      }
+    </style>
   </head>
 
   <body>
@@ -19,12 +25,13 @@
           <p>dairy-free recipes just for you</p>
         </div>
 
-        <div class="top-bar-right search-bar">
+        <div class="top-bar-right">
+          <ul class="menu">
           <%= form_tag(recipes_path, method: :get) do %>
-            <div><%= label_tag "Search for recipes:" %></div>
-            <div><%= text_field_tag :q %></div>
-            <div><%= submit_tag "Search", :name => nil, class: "button" %></div>
+            <li><%= text_field_tag :q %></li>
+            <li><%= submit_tag "Search", :name => nil, class: "button" %></li>
           <% end %>
+          </ul>
         </div>
       </nav>
 
@@ -37,19 +44,6 @@
 
     <main>
       <%= yield %>
-
-      <!-- sample foundaton pagination formatting -->
-      <ul class="pagination text-center" role="navigation" aria-label="Pagination">
-        <li class="pagination-previous disabled">Previous</li>
-        <li class="current"><span class="show-for-sr">You're on page</span> 1</li>
-        <li><a href="#" aria-label="Page 2">2</a></li>
-        <li><a href="#" aria-label="Page 3">3</a></li>
-        <li><a href="#" aria-label="Page 4">4</a></li>
-        <li class="ellipsis"></li>
-        <li><a href="#" aria-label="Page 12">12</a></li>
-        <li><a href="#" aria-label="Page 13">13</a></li>
-        <li class="pagination-next"><a href="#" aria-label="Next page">Next</a></li>
-      </ul>
     </main>
 
     <footer class="footer-bar">
