@@ -19,7 +19,7 @@
 
   <body>
     <header>
-      <nav class="top-bar">
+      <nav class="top-bar yellow">
         <div class="top-bar-left">
           <h2><a href="/">NO MOO</a></h2>
           <p>dairy-free recipes just for you</p>
@@ -28,7 +28,7 @@
         <div class="top-bar-right">
           <ul class="menu">
           <%= form_tag(recipes_path, method: :get) do %>
-            <li><%= text_field_tag :q %></li>
+            <li class="no-margin"><%= text_field_tag :q %></li>
             <li><%= submit_tag "Search", :name => nil, class: "button" %></li>
           <% end %>
           </ul>
