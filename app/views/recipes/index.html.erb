@@ -1,16 +1,48 @@
-<p>Welcome to the top dairy-free recipes site for the good of the lactose-intolerant folks.</p>
-
-<h2>Your Recipes</h2>
-<%= paginate @pg_recipes %>
-
-<% if @pg_recipes.empty? %>
+<!-- <% if @recipes.empty? %>
   <%= flash[:message] = "No recipes found with your search." %>
 <% else %>
   <%= flash[:message] = "Recipes found!" %>
-  <p><%= "#{@recipes.count} recipes found for your search '#{params[:q]}'." %></p>
+<% end %> -->
 
-  <% @pg_recipes.each_with_index do |recipe, i| %>
-    <img src="<%= recipe.image %>">
-    <h4><%= link_to recipe.label, recipe_path(i) %></h4>
+<section class="recipe-cards row" data-equalizer>
+  <section class="large-4 columns">
+    <div class="card text-center">
+      <h1>Your Recipes</h1>
+      <p><%= "Showing 10 results at a time from your search '#{params[:q]}'." %></p>
+    </div>
+  </section>
+
+  <% @recipes.each_with_index do |recipe, i| %>
+  <article class="large-4 columns">
+    <div class="card">
+      <div class="card-section text-center">
+        <img src="<%= recipe.image %>">
+      </div>
+      <div class="card-divider text-center">
+        <h5 data-equalizer-watch><%= link_to recipe.label, recipe_path(i) %></h5>
+      </div>
+    </div>
+  </article>
   <% end %>
-<% end %>
+
+  <section class="large-4 columns">
+    <div class="card">
+      <h2>PAGE</h2>
+    </div>
+  </section>
+
+  <h3><%= link_to "next", recipes_path( q: params[:q], page: params[:page].to_i + 1 ) %></h3>
+
+  <!-- sample foundaton pagination formatting -->
+  <ul class="pagination text-center" role="navigation" aria-label="Pagination">
+    <li class="pagination-previous disabled">Previous</li>
+    <li class="current"><span class="show-for-sr">You're on page</span> 1</li>
+    <li><a href="#" aria-label="Page 2">2</a></li>
+    <li><a href="#" aria-label="Page 3">3</a></li>
+    <li><a href="#" aria-label="Page 4">4</a></li>
+    <li class="ellipsis"></li>
+    <li><a href="#" aria-label="Page 12">12</a></li>
+    <li><a href="#" aria-label="Page 13">13</a></li>
+    <li class="pagination-next"><a href="#" aria-label="Next page">Next</a></li>
+  </ul>
+</div>

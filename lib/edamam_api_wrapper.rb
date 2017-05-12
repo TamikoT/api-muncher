@@ -6,23 +6,31 @@ EDAMAM_ID = ENV["EDAMAM_ID"]
 EDAMAM_KEY = ENV["EDAMAM_KEY"]
 
 class EdamamApiWrapper
-  attr_reader :all_recipes
+  attr_reader :all_recipes, :count
 
-  def initialize; end
+  def self.find_recipes(query, page)
+    if page
+      per_page = 10
+      from = (page - 1) * per_page
+      to = page * per_page
 
-  def self.find_recipes(query)
-    query_params = {
-      "q" => query,
-      "id" => EDAMAM_ID,
-      "app_key" => EDAMAM_KEY,
-      # "from" => 0,
-      # "to" => 5, # first 5 recipes
-      "health" => "dairy-free",
-    }
-    response = HTTParty.get(BASE_URL, query: query_params).parsed_response
-    recipe_collection = Array.new
-    response["hits"].map { |recipe| recipe_collection << Recipe.new(recipe) }
-    @all_recipes = recipe_collection
+      query_params = {
+        "q" => query,
+        "id" => EDAMAM_ID,
+        "app_key" => EDAMAM_KEY,
+        "from" => from,
+        "to" => to,
+        "health" => "dairy-free",
+      }
+
+      response = HTTParty.get(BASE_URL, query: query_params).parsed_response
+      recipe_collection = Array.new
+      response["hits"].map { |recipe| recipe_collection << Recipe.new(recipe) }
+      @count = response["count"]
+      @all_recipes = recipe_collection
+    else
+      ArgumentError.new("invalid page")
+    end
   end
 
   def self.find(index)
