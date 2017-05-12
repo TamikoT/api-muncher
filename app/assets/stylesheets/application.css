@@ -16,12 +16,14 @@
 
  */
 
+.hero-cow {
+  color: white;
+}
  .search-bar div {
    display: inline-block;
  }
 
 .footer-bar {
-  border-top: 1px solid green;
   margin: 0;
 }
 
@@ -30,8 +32,42 @@
   vertical-align: middle;
 }
 
-.html {
+main {
   background-image: url(grassy_background.jpg);
-  background-repeat: no-repeat;
+}
 
+.small-cow {
+  max-height: 280px;
+  max-width: 280px;
+}
+
+.next-card {
+  text-align: center;
+  vertical-align: middle;
+}
+
+.recipe-cards {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+.yellow {
+  background-color: yellow;
+}
+
+.white {
+  background-color: white;
+}
+
+.ingredients-box {
+  display: block;
+  align-items: center;
+}
+
+.ingredients li {
+  list-style: none;
+}
+
+.recipe-photo {
+  margin-top: 1rem;
 }
