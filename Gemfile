@@ -37,6 +37,7 @@ gem 'jbuilder', '~> 2.5'
 
 # For Pagination
 gem 'kaminari'
+gem 'foundation-rails'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -67,7 +68,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 group :development do
   gem 'better_errors'
   gem 'pry-rails'
-  gem 'foundation-rails'
 end
 
 group :test do

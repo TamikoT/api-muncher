@@ -24,8 +24,8 @@ VCR.configure do |config|
     :match_requests_on => [:method, :uri, :body] # The http method, URI and body of a request all need to match
   }
   # Don't leave token lying around in a cassette file.
-  config.filter_sensitive_data("<EDAMAM_ID>") { ENV['EDAMAM_ID'] }
-  config.filter_sensitive_data("<EDAMAM_KEY>") { ENV['EDAMAM_KEY'] }
+  config.filter_sensitive_data('EDAMAM_ID') { ENV['EDAMAM_ID'] }
+  config.filter_sensitive_data('EDAMAM_KEY') { ENV['EDAMAM_KEY'] }
 end
 
 class ActiveSupport::TestCase
