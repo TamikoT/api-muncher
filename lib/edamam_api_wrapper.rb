@@ -1,6 +1,3 @@
-require 'httparty'
-require 'dotenv-rails'
-
 BASE_URL = "https://api.edamam.com/search\?"
 EDAMAM_ID = ENV["EDAMAM_ID"]
 EDAMAM_KEY = ENV["EDAMAM_KEY"]

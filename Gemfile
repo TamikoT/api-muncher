@@ -38,6 +38,8 @@ gem 'jbuilder', '~> 2.5'
 # For Pagination
 gem 'kaminari'
 gem 'foundation-rails'
+# to access external API
+gem 'httparty'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -49,8 +51,6 @@ group :development, :test do
   gem 'webmock'
   # to access .env cntent
   gem 'dotenv-rails'
-  # to access external API
-  gem 'httparty'
 end
 
 group :development do
