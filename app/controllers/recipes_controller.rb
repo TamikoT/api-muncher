@@ -1,5 +1,5 @@
 class RecipesController < ApplicationController
-  attr_reader :pg_recipes, :page
+  attr_reader :page
 
   def home
   end
